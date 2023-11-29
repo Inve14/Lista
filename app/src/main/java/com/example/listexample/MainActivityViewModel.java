@@ -22,32 +22,13 @@ public class MainActivityViewModel extends AndroidViewModel {
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         theModel = new Model();
-
-        ApiInterface apiInterface = RetrofitClient.getRetrofitIstance().create(ApiInterface.class);
-        Call<List<User>> call = apiInterface.getUserInformation("l5p8XVRmz6ApeTVeeUwK");
-
-
-        call.enqueue(new Callback<List<User>>() {
-            @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                if (response.isSuccessful()) {
-                    List<User> risposta = response.body();
-                    for (User user : risposta) {
-                        //theModel.simulateLoadData(user.getUid(), user.getExperience());
-                        help.add(user.getUid() + " " + user.getExperience());
-                        Log.d("MainActivity", "onResponse: " + help.toString() + " " + user.getUid() + " " + user.getExperience());
-                    }
-                }
-                Log.d("contactsHelp: ", help.toString());
-                theModel.simulateLoadData(help);
-            }
-
-            @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-                Log.d("MainActivity", "onFailure: " + t.getMessage());
-            }
-        });
     }
+
+    public void setHelp(List<String> help) {
+        this.help = help;
+        theModel.simulateLoadData(help);
+    }
+
 
     public int getContactsCount() {
         Log.d("ModelSize: ", theModel.getContactsCount()+ "");
