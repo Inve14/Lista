@@ -50,6 +50,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
     public int getContactsCount() {
+        Log.d("ModelSize: ", theModel.getContactsCount()+ "");
         return theModel.getContactsCount();
     }
 

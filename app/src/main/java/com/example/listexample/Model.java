@@ -15,21 +15,26 @@ public class Model {
     }
 
     public void simulateLoadData(List<String> help) {
+        for (int i=0; i<help.size(); i++){
+            contacts.add(help.get(i));
+            Log.d("AiutamiHelp: ", help.get(i));
+        }
         /*
         for (String s : help) {
             contacts.add(s);
             Log.d("contactsContacts: ", s);
         }*/
-        for (int i=0; i<100; i++) {
-            contacts.add("contatto " + i);
+        for (int i=0; i<contacts.size(); i++){
+            Log.d("AiutamiContacts: ", contacts.get(i));
         }
-        Log.d("contacts: ", contacts.toString());
+        Log.d("contactsSize: ", contacts.size() + "");
         /*
         contacts.add(uid + " " + experience);
         Log.d("contacts: ", contacts.toString());*/
     }
 
     public int getContactsCount() {
+        Log.d("contactsSize: ", String.valueOf(contacts.size()));
         return contacts.size();
     }
 
